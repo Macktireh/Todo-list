@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'todolist/css/style.css' %}">
+
+{% endblock %}
+
+
+
+{% block content %}
+
+	<div class="container">
+
+		<h1>Mes Tâches à faire</h1>
+
+		<div class="box-input-tache">
+			<form method="POST">
+				{% csrf_token %}
+				<!-- <input class="input-tache" type="text" name="input-tache" placeholder="ajouter une tâche"> -->
+				{{ form }}
+				<button id="btn-add" type="submit">Ajouter</button>
+			</form>		
+		</div>
+
+		<div class="line"></div>
+
+		{% for tache in taches reversed %}
+			<div class="box-tache">
+				<h5>{{ tache.tache | title }}</h5>
+				<div class="box-btn">
+					<a id="btn-edit" href="update/{{ tache.id }}">Modifier</a>
+					<a id="btn-delete" href="delete/{{ tache.id }}">Supprimer</a>
+				</div>
+			</div>
+		{% endfor %}
+
+	</div>
+
+{% endblock %}
+
+
+
+{% block js %}
+
+	<script type="text/javascript", src="{% static 'todolist/js/index.js' %}"></script>
+
+{% endblock %}

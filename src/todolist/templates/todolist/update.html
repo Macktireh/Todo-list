@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'todolist/css/update.css' %}">
+
+{% endblock %}
+
+
+
+{% block content %}
+
+	<div class="container">
+
+		<h1>Mes Tâches à faire</h1>
+
+		<div class="box-input-tache">
+			<form method="POST">
+				{% csrf_token %}
+				{{ form }}
+				<button id="btn-add" type="submit">Ajouter</button>
+			</form>		
+		</div>
+
+	</div>
+
+{% endblock %}
+
+
+
+{% block js %}
+	<script type="text/javascript", src="{% static 'todolist/js/update.js' %}"></script>
+{% endblock %}
