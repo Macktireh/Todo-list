@@ -28,7 +28,7 @@
 
 		{% for tache in taches reversed %}
 			<div class="box-tache">
-				<h5>{{ tache.tache | title }}</h5>
+				<h5>{{ tache.tache | upper }}</h5>
 				<div class="box-btn">
 					<a id="btn-edit" href="update/{{ tache.id }}">Modifier</a>
 					<a id="btn-delete" href="delete/{{ tache.id }}">Supprimer</a>
